@@ -2,18 +2,19 @@
 
 import logo from './logo.svg';
 import './App.css';
-import {DISCOVER_API, getAllMovies} from "./services/api/API";
+import {DISCOVER_API, discoverMovies, getAllMovies, getChosenMovie, getMovies} from "./services/api/API";
 import {useEffect, useState} from "react";
-import  Movie from './components/movieList/MovieList'
-import MovieList from "./components/movieList/MovieList";
+
 import {useDispatch, useSelector} from "react-redux";
-import {allMoviesReducer} from "./redux/reducers/allMoviesReducer";
 import MoviesList from "./components/moviesList/MoviesList";
+import Header from "./components/header/Header";
+
+
 
 
 function App() {
 
-  const {movies} = useSelector(store => store.allMoviesReducer)
+  const {movies, page} = useSelector(store => store.allMoviesReducer)
   const dispatch = useDispatch()
 
   // console.log(movies)
@@ -34,23 +35,36 @@ function App() {
 //
 //   }
 
+  // useEffect(() => {
+  //   getAllMovies(page).then(value => {
+  //     dispatch({type: "GET_MOVIES", payload: [...value.results]})
+  //   })
+  // }, [page])
+  //
+
+
   useEffect(() => {
-    getAllMovies().then(value => console.log(value))
+    getMovies(page).then(value => {
+      dispatch({type: "GET_MOVIES", payload: [...value.data.results]})
+    })
+  }, [page])
+
+
+  useEffect(() =>{
+    getChosenMovie(379686).then(value => console.log(value))
   }, [])
 
 
+console.log(movies)
 
-
-  console.log(movies)
-
-
-//
-//
-//
 
 
   return (
     <div>
+
+      <Header/>
+      <MoviesList/>
+
     {/*<MoviesList movies={movies}/>*/}
 
         {/*{*/}
@@ -59,11 +73,22 @@ function App() {
       {/*  })*/}
       {/*})*/}
 
+      {/*{*/}
+      {/*  movies.map(value => {*/}
+      {/*    return */}
+      {/*  })*/}
+      {/*}*/}
 
 
 
 
+  <button onClick={() => {
+    dispatch({type: "NEXT_PAGE"})
+  }}>Next Page</button>
 
+      <button onClick={() => {
+        dispatch({type: "PREVIOUS_PAGE"})
+      }}>Previous Page</button>
 
     </div>
   );
