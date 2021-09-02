@@ -1,7 +1,7 @@
 // import axios from 'axios'
  import axios from "axios";
-
-
+//Get Movies from id genre
+//https://api.themoviedb.org/3/discover/movie?api_key=###&with_genres=28
 
 export const DISCOVER_API = 'https://api.themoviedb.org/3/discover/movie?api_key=9bf31fec07dfb53a6611035e41ed5ddf&page=1'
 export const PosterPreview =  "https://image.tmdb.org/t/p/w1280"
@@ -25,7 +25,12 @@ const instance = axios.create({
 
 const getMovies = async (pageNumber) => await instance.get(`discover/movie?api_key=9bf31fec07dfb53a6611035e41ed5ddf&page=${pageNumber}`)
 
-const getChosenMovie = async (id) => await instance.get(`movie/${id}?api_key=${API_KEY}`)
+const getSelectedMovie = async (id) => await instance.get(`movie/${id}?api_key=${API_KEY}`)
+
+
+const getGenres = async () => await instance.get(`genre/movie/list?api_key=${API_KEY}`)
+
+const getMoviesByGenre = async (id, pageNumber) => await instance.get(`discover/movie?api_key=${API_KEY}&with_genres=${id}&page=${pageNumber}`)
 
 
 //https://api.themoviedb.org/3/movie/464052?api_key=1a2b3c4d5e&language=en-US
@@ -33,4 +38,4 @@ const getChosenMovie = async (id) => await instance.get(`movie/${id}?api_key=${A
 export const IMAGE_API = "https://image.tmdb.org/t/p/w1280"
 
 
-export {getMovies, getChosenMovie}
+export {getMovies, getSelectedMovie, getGenres, getMoviesByGenre}

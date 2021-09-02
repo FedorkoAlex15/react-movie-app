@@ -1,11 +1,6 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route, Link,
-    withRouter
-} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {useEffect} from "react";
-import {getChosenMovie} from "../../services/api/API";
+import { getSelectedMovie} from "../../services/api/API";
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -19,7 +14,7 @@ const {match: {params: {id}}} = props
 
 console.log(id)
     useEffect(() =>{
-        getChosenMovie(id).then(value => {
+        getSelectedMovie(id).then(value => {
             dispatch({type: "MOVIE_INFO", payload: {...value.data}})
 
         })
@@ -30,7 +25,7 @@ console.log(id)
 
     return(
         <div>
-            <Link to={'/'}>HomePage</Link>
+            <Link to={'/'}>All Movies</Link>
             {movieInfo.title} - {movieInfo.overview}
 
 

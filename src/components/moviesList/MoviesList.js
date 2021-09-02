@@ -22,11 +22,9 @@ export default function MoviesList(){
     return(
         <div className={'movies-box'}>
             {
-
                 movies.map(value => {
                     return <MoviesListCard key={value.id} items={value}/>
                 })
-
             }
         </div>
     )
