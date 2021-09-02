@@ -1,5 +1,6 @@
 const initialState = {
     movies: [],
+    movieInfo: {},
     page: 1
 }
 
@@ -8,6 +9,10 @@ export const allMoviesReducer = (state = initialState, action) => {
     switch (action.type){
         case 'GET_MOVIES': {
             return {...state, movies: action.payload}
+        }
+
+        case 'MOVIE_INFO': {
+            return {...state, movieInfo: action.payload }
         }
 
 
@@ -21,10 +26,6 @@ export const allMoviesReducer = (state = initialState, action) => {
         default:
             return state
     }
-
-
-
-
 
 
 }

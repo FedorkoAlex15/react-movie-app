@@ -1,5 +1,10 @@
 
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route, Link,
+    withRouter
+} from "react-router-dom"
 import logo from './logo.svg';
 import './App.css';
 import {DISCOVER_API, discoverMovies, getAllMovies, getChosenMovie, getMovies} from "./services/api/API";
@@ -8,7 +13,9 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import MoviesList from "./components/moviesList/MoviesList";
 import Header from "./components/header/Header";
+import MovieInfo from "./components/movieInfo/MovieInfo";
 
+// todo - окремий css о кожного компонета
 
 
 
@@ -43,27 +50,36 @@ function App() {
   //
 
 
-  useEffect(() => {
-    getMovies(page).then(value => {
-      dispatch({type: "GET_MOVIES", payload: [...value.data.results]})
-    })
-  }, [page])
+  // useEffect(() => {
+  //   getMovies(page).then(value => {
+  //     dispatch({type: "GET_MOVIES", payload: [...value.data.results]})
+  //   })
+  // }, [page])
+  //
+  //
+  // useEffect(() =>{
+  //   getChosenMovie(379686).then(value => console.log(value.data))
+  // }, [])
+  //
 
-
-  useEffect(() =>{
-    getChosenMovie(379686).then(value => console.log(value))
-  }, [])
-
-
-console.log(movies)
+// console.log(movies)
 
 
 
   return (
     <div>
+        <Header/>
+    <Router>
 
-      <Header/>
-      <MoviesList/>
+        <Route exact path={'/'} component={MoviesList} />
+        <Route path={'/movies/:id'} render={(props) => {
+            return <MovieInfo {...props}/>
+        }}/>
+
+
+    </Router>
+
+
 
     {/*<MoviesList movies={movies}/>*/}
 
