@@ -1,0 +1,46 @@
+.user-box{
+    width: 40px;
+
+}
+
+.user-box img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+
+.header{
+    height: 100px;
+    background-color: #76C5F4;
+}
+
+.container{
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.logo-box i{
+   font-size:40px;
+    color: #032541;
+}
+
+.nav-box{
+    column-gap: 20px;
+    display: flex;
+
+}
+
+.nav-box a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #032541;
+}
+
+.nav-box a:hover{
+    color: red;
+}

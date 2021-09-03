@@ -1,0 +1,23 @@
+.container_genresList {
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: white;
+
+}
+
+
+.genre {
+    margin: 15px 0;
+}
+
+
+.genre a{
+    text-decoration: none;
+    color: black
+}
+
+
+.genre a:hover {
+    color: red;
+}

@@ -1,19 +1,25 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export default function Pagination() {
 
-
+    const {page} = useSelector(store => store.allMoviesReducer)
    const dispatch = useDispatch()
 
 
     return(
-        <div>
+        <div className={'pagination'}>
             <button onClick={() => {
-                dispatch({type: "NEXT_PAGE"})
+                if(page >= 1){
+                    dispatch({type: "NEXT_PAGE"})
+                }
+
             }}>Next Page</button>
 
             <button onClick={() => {
-                dispatch({type: "PREVIOUS_PAGE"})
+                if (page > 1){
+                    dispatch({type: "PREVIOUS_PAGE"})
+                }
+
             }}>Previous Page</button>
         </div>
 

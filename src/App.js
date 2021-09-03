@@ -28,10 +28,11 @@ import MoviesOfGenre from "./components/moviesOfGenre/MoviesOfGenre";
 import Pagination from "./components/pagination/Pagination";
 
 // todo - окремий css о кожного компонета
-// todo - змінити chosenMovies на selecteMovies
+
 // todo - clean import
 // todo - навести лад з пагінацією
 
+// todo - clean import
 
 
 
@@ -116,14 +117,6 @@ function App() {
            return  <MoviesOfGenre {...props}/>
         }} />
 
-        <Pagination/>
-        {/*<button onClick={() => {*/}
-        {/*    dispatch({type: "NEXT_PAGE"})*/}
-        {/*}}>Next Page</button>*/}
-
-        {/*<button onClick={() => {*/}
-        {/*    dispatch({type: "PREVIOUS_PAGE"})*/}
-        {/*}}>Previous Page</button>*/}
 
     </div>
 

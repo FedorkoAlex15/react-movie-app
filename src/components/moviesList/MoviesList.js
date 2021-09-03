@@ -2,7 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import MoviesListCard from "../moviesListCard/MoviesListCard";
 import {useEffect} from "react";
 import {getChosenMovie, getMovies} from "../../services/api/API";
-
+import Pagination from "../pagination/Pagination";
+import '../../App.css'
 export default function MoviesList(){
 
     const {movies, page} = useSelector(store => store.allMoviesReducer)
@@ -20,12 +21,17 @@ export default function MoviesList(){
 
 
     return(
-        <div className={'movies-box'}>
-            {
-                movies.map(value => {
-                    return <MoviesListCard key={value.id} items={value}/>
-                })
-            }
-        </div>
+        <>
+            <Pagination/>
+            <div className={'movies-box'}>
+
+                {
+                    movies.map(value => {
+                        return <MoviesListCard key={value.id} items={value}/>
+                    })
+                }
+            </div>
+        </>
+
     )
 }

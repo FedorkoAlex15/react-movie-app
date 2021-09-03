@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getGenres} from "../../services/api/API";
-import MoviesListCard from "../moviesListCard/MoviesListCard";
+import '../genresList/GenreList.css'
 import GenreListCard from "../genreListCard/GenreListCard";
 
 export default function GenresList(){
@@ -22,7 +22,7 @@ console.log(allGenres)
 
 
     return(
-        <div>
+        <div className={'container_genresList'}>
             {
                 allGenres.map(value => {
                     return <GenreListCard key={value.id}  items={value}/>
