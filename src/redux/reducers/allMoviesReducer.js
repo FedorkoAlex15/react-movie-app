@@ -5,7 +5,8 @@ const initialState = {
     allGenres: [],
     movieInfo: {},
     moviesOfGenre: [],
-    page: 1
+    page: 1,
+    darkMode: false
 
 }
 
@@ -36,6 +37,10 @@ export const allMoviesReducer = (state = initialState, action) => {
 
         case  "PREVIOUS_PAGE": {
             return {...state, page: --state.page}
+        }
+
+        case "DARK_MODE": {
+            return {...state, darkMode: action.payload}
         }
         default:
             return state

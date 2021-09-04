@@ -23,7 +23,7 @@ export default function MovieInfo(props) {
     console.log(movieInfo);
 
     return (
-        <div>
+        <div className={'movieInfo-page'}>
 
 
             <div className={'container-movieInfo'}>

@@ -26,6 +26,7 @@ import Genres from "./components/genresList/GenresList";
 import GenresList from "./components/genresList/GenresList";
 import MoviesOfGenre from "./components/moviesOfGenre/MoviesOfGenre";
 import Pagination from "./components/pagination/Pagination";
+import DarkMode from "./components/darkMode/DarkMode";
 
 // todo - окремий css о кожного компонета
 
@@ -38,13 +39,25 @@ import Pagination from "./components/pagination/Pagination";
 
 function App() {
 
-  const {movies, page} = useSelector(store => store.allMoviesReducer)
+  const {movies, page, darkMode} = useSelector(store => store.allMoviesReducer)
   const dispatch = useDispatch()
 
 // useEffect(() => {
 //     getGenres().then(value => console.log(value))
 // }, [])
 
+
+    // darkMode ? 'darkmode' : 'lightmode';
+    // (!darkMode) ? 'lightmode' : 'darkmode'
+
+    const validation = () => {
+      if(darkMode){
+          return ('darkmode' && dispatch({type: 'DARK_MODE', payload: false}))
+      } else {
+          return 'lightmode'
+      }
+
+    }
 
     console.log(movies);
 
@@ -103,11 +116,10 @@ function App() {
 
 
   return (
-
     <Router>
-        <div>
+        <div className={ darkMode ? 'darkmode' : 'lightmode'}>
             <Header/>
-
+            <DarkMode/>
         <Route exact path={'/'} component={MoviesList} />
         <Route path={'/movies/:id'} render={(props) => {
             return <MovieInfo {...props}/>
