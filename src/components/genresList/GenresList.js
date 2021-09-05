@@ -13,7 +13,7 @@ export default function GenresList(){
 
     useEffect(() => {
         getGenres().then(value => dispatch({type: 'GET_GENRES', payload: [...value.data.genres] }))
-       // getGenres().then(value => console.log(value.data))
+
     }, [])
 
 // const {0}  = genresList

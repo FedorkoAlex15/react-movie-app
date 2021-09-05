@@ -1,15 +1,8 @@
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route, Link,
-    withRouter
-} from "react-router-dom"
+import {Link} from "react-router-dom"
 import '../../App.css'
 import {PosterPreview} from "../../services/api/API";
 
 export default function MoviesListCard({items}){
-
-
 
     return(
         <div className={'movie-box'}>

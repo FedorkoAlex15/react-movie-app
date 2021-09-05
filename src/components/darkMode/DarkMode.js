@@ -6,9 +6,9 @@ export default function DarkMode(){
     const dispatch = useDispatch()
 
     return(
-        <div>
-            <button onClick={() => dispatch({type: 'DARK_MODE', payload: true})}><i className="far fa-moon"></i></button>
-            <button onClick={() => dispatch({type: 'DARK_MODE', payload: false})}><i className="far fa-sun"></i></button>
+        <div className={'dark-mode'}>
+            <button className={'dark-mode-toggle'} onClick={() => dispatch({type: 'DARK_MODE', payload: true})}><i className="far fa-moon"></i></button>
+            <button className={'light-mode-toggle'}  onClick={() => dispatch({type: 'DARK_MODE', payload: false})}><i className="far fa-sun"></i></button>
         </div>
     )
 }
