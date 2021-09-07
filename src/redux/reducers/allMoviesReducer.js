@@ -14,26 +14,25 @@ const initialState = {
     allGenres: [],
     movieInfo: {},
     moviesOfGenre: [],
-    totalPages: null,
+    totalPages: 0,
     page: 1,
     darkMode: false
 
 }
 
 export const allMoviesReducer = (state = initialState, action) => {
-
-    switch (action.type){
+    switch (action.type) {
 
         case GET_MOVIES: {
             return {...state, movies: action.payload}
         }
 
         case MOVIE_INFO: {
-            return {...state, movieInfo: action.payload }
+            return {...state, movieInfo: action.payload}
         }
 
         case GET_GENRES : {
-               return {...state, allGenres: action.payload}
+            return {...state, allGenres: action.payload}
         }
 
         case GET_MOVIES_OF_GENRE: {
@@ -41,7 +40,7 @@ export const allMoviesReducer = (state = initialState, action) => {
         }
 
         case NEXT_PAGE: {
-             return {...state, page: ++state.page}
+            return {...state, page: ++state.page}
         }
 
         case  PREVIOUS_PAGE: {

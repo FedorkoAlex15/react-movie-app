@@ -2,7 +2,6 @@ import {useDispatch, useSelector} from "react-redux";
 
 export default function DarkMode(){
 
-    const {darkMode} = useSelector(store => store.allMoviesReducer)
     const dispatch = useDispatch()
 
     return(

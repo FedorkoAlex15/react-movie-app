@@ -4,28 +4,20 @@ import {getGenres} from "../../services/api/API";
 import '../genresList/GenreList.css'
 import GenreListCard from "../genreListCard/GenreListCard";
 
-export default function GenresList(){
-
+export default function GenresList() {
     const {allGenres} = useSelector(store => store.allMoviesReducer)
     const dispatch = useDispatch()
 
-
-
     useEffect(() => {
-        getGenres().then(value => dispatch({type: 'GET_GENRES', payload: [...value.data.genres] }))
-
+        getGenres().then(value => dispatch({type: 'GET_GENRES', payload: [...value.data.genres]}))
     }, [])
 
-// const {0}  = genresList
-//     console.log(genresList);
-console.log(allGenres)
 
-
-    return(
+    return (
         <div className={'container_genresList'}>
             {
                 allGenres.map(value => {
-                    return <GenreListCard key={value.id}  items={value}/>
+                    return <GenreListCard key={value.id} items={value}/>
                 })
             }
         </div>
